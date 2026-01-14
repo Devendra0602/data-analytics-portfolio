@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--
+============================================
+DATA ANALYTICS PORTFOLIO WEBSITE
+
+NOTE:
+This website is intentionally designed to reflect a professionally built
+portfolio. It does NOT imply who developed the website itself.
+The focus is purely on showcasing analytics work and outcomes.
+============================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- EDIT: Update page title if required -->
+  <title>Devendra Patil | Data Analyst Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #0b1120; color: #e5e7eb; line-height: 1.7; }
+    a { color: #38bdf8; text-decoration: none; }
+
+    /* HERO SECTION */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at top, #1e293b, #020617 65%);
+      padding: 20px;
+    }
+    header h1 { font-size: 3.2rem; font-weight: 700; }
+    header span { color: #38bdf8; }
+    header p { font-size: 1.25rem; color: #cbd5f5; margin: 15px 0 30px; }
+
+    .hero-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .btn-primary { background: #38bdf8; color: #020617; }
+    .btn-primary:hover { background: #0ea5e9; }
+    .btn-outline { border: 1px solid #38bdf8; }
+    .btn-outline:hover { background: #38bdf8; color: #020617; }
+
+    section { padding: 90px 12%; }
+    h2 { font-size: 2.3rem; margin-bottom: 40px; position: relative; }
+    h2::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: #38bdf8;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .about p { color: #cbd5f5; }
+    .about-box {
+      background: #020617;
+      padding: 25px;
+      border-radius: 14px;
+      border: 1px solid #1e293b;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .skill {
+      background: #020617;
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid #1e293b;
+      transition: transform 0.3s;
+    }
+    .skill:hover { transform: translateY(-6px); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    .project {
+      background: linear-gradient(180deg, #020617, #020617cc);
+      padding: 25px;
+      border-radius: 18px;
+      border: 1px solid #1e293b;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(56,189,248,0.15);
+    }
+    .project img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #1e293b;
+    }
+    .tags span {
+      display: inline-block;
+      margin: 10px 6px 0 0;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+      background: #0f172a;
+      border-radius: 20px;
+      border: 1px solid #1e293b;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: #020617;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid #1e293b;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      background: #020617;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 2.4rem; }
+      section { padding: 70px 8%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header>
+  <!-- EDIT: Update displayed name if required -->
+  <h1>Hi, I'm <span>Devendra Patil</span></h1>
+
+  <!-- EDIT: Modify professional headline if needed -->
+  <p>Data Analyst | SQL • Power BI • Python • Excel</p>
+
+  <div class="hero-buttons">
+    <!-- EDIT: Replace resume.pdf with your actual resume -->
+    <a href="resume.pdf" class="btn-primary">Download Resume</a>
+    <a href="#projects" class="btn-outline">View Projects</a>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2>About Me</h2>
+  <div class="about-grid">
+    <!-- EDIT: Update summary text -->
+    <p>
+      Data analyst focused on transforming raw data into actionable insights through SQL-driven analysis,
+      business intelligence dashboards, and clear data storytelling. Experienced in building end-to-end
+      analytics solutions including data cleaning, modeling, visualization, and reporting.
+    </p>
+
+    <div class="about-box">
+      <!-- EDIT: Optional highlights -->
+      <strong>Professional Focus</strong><br>
+      Business Intelligence & Data Analytics<br>
+      Data-Driven Decision Making<br><br>
+
+      <strong>Core Roles</strong><br>
+      Data Analyst · BI Analyst · Business Analyst
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section>
+  <h2>Core Skills</h2>
+  <div class="skills-grid">
+    <div class="skill">SQL<br><small>Joins, CTEs, Window Functions</small></div>
+    <div class="skill">Power BI<br><small>DAX, Dashboards, Data Modeling</small></div>
+    <div class="skill">Python<br><small>Pandas, NumPy, Data Cleaning</small></div>
+    <div class="skill">Excel<br><small>Pivot Tables, Lookups</small></div>
+    <div class="skill">Statistics<br><small>Descriptive Analysis</small></div>
+    <div class="skill">Analytics<br><small>Insights & Reporting</small></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Selected Projects</h2>
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project">
+      <!-- EDIT: Replace image -->
+      <img src="images/hr_dashboard.png" alt="HR Analytics Dashboard">
+      <h3>HR Analytics Dashboard</h3>
+      <p>Analyzed employee attrition and performance trends using SQL and Power BI.</p>
+      <div class="tags"><span>SQL</span><span>Power BI</span></div>
+      <!-- EDIT: Replace link -->
+      <p><a href="#">View SQL Queries</a></p>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project">
+      <img src="images/sales_dashboard.png" alt="Sales Dashboard">
+      <h3>Sales Performance Analysis</h3>
+      <p>Identified revenue trends and top-performing products to support decisions.</p>
+      <div class="tags"><span>Excel</span><span>SQL</span><span>Power BI</span></div>
+      <p><a href="#">View Project</a></p>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project">
+      <img src="images/covid_analysis.png" alt="COVID SQL Analysis">
+      <h3>COVID-19 Data Analysis</h3>
+      <p>Used advanced SQL to analyze cases, deaths, and vaccination trends.</p>
+      <div class="tags"><span>SQL</span></div>
+      <p><a href="#">View SQL Analysis</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <h2>Contact</h2>
+  <div class="contact-box">
+    <!-- EDIT: Update contact info -->
+    <p>Email: your.email@example.com</p>
+    <p>GitHub: <a href="https://github.com/Devendra0602" target="_blank">github.com/Devendra0602</a></p>
+    <p>LinkedIn: linkedin.com/in/devendrapatil</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Devendra Patil · Data Analytics Portfolio
+</footer>
+
+</body>
+</html>
