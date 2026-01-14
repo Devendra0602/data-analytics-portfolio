@@ -1,36 +1,53 @@
 <!DOCTYPE html><!--
 ============================================
 PROFESSIONAL DATA ANALYTICS PORTFOLIO
-Enhanced version with advanced animations & effects
+Advanced version with animations, modals, metrics & theme toggle
 ============================================
 --><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <!-- EDIT: Page title -->  <title>Devendra Patil | Data Analyst Portfolio</title>  <!-- Google Font -->  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <title>Devendra Patil | Data Analyst Portfolio</title>  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <style>
     :root {
       --primary: #38bdf8;
-      --bg-dark: #020617;
       --bg-main: #0b1120;
-      --card-bg: #020617;
+      --bg-card: #020617;
       --text-light: #cbd5f5;
+    }
+
+    body.light {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --text-light: #334155;
+      background: var(--bg-main);
+      color: #020617;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg-main); color: #e5e7eb; }
+    a { color: var(--primary); text-decoration: none; }
 
-    /* ===== GLOBAL ANIMATION BASE ===== */
-    section { opacity: 0; transform: translateY(60px); transition: all 1s ease; }
-    section.show { opacity: 1; transform: translateY(0); }
+    /* ===== THEME TOGGLE ===== */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--bg-card);
+      border: 1px solid #1e293b;
+      padding: 10px 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      z-index: 1000;
+    }
 
     /* ===== HERO ===== */
     header {
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      background: linear-gradient(135deg, #020617, #0b1120, #020617);
+      background: linear-gradient(135deg, #020617, #0b1120);
       position: relative;
       overflow: hidden;
     }
@@ -41,75 +58,52 @@ Enhanced version with advanced animations & effects
       width: 600px;
       height: 600px;
       background: radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
-      animation: float 8s infinite alternate;
+      animation: float 10s infinite alternate;
     }
 
     @keyframes float {
-      from { transform: translate(-150px, -150px); }
-      to { transform: translate(150px, 150px); }
+      from { transform: translate(-200px, -200px); }
+      to { transform: translate(200px, 200px); }
     }
 
-    .hero {
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-    }
-
-    .hero h1 { font-size: 3.5rem; font-weight: 700; animation: fadeDown 1s ease; }
+    .hero { position: relative; z-index: 2; padding: 20px; }
+    .hero h1 { font-size: 3.5rem; }
     .hero span { color: var(--primary); }
-    .hero p { color: var(--text-light); margin: 20px 0 35px; font-size: 1.3rem; animation: fadeUp 1.2s ease; }
+    .hero p { margin: 20px 0 35px; color: var(--text-light); font-size: 1.3rem; }
 
     .hero-buttons a {
-      display: inline-block;
-      padding: 15px 32px;
+      padding: 14px 30px;
+      border-radius: 30px;
       margin: 0 10px;
-      border-radius: 40px;
-      font-weight: 500;
-      transition: all 0.4s ease;
+      transition: 0.3s;
     }
 
     .btn-primary { background: var(--primary); color: #020617; }
-    .btn-primary:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(56,189,248,0.6); }
-
+    .btn-primary:hover { box-shadow: 0 0 40px rgba(56,189,248,0.6); }
     .btn-outline { border: 1px solid var(--primary); }
-    .btn-outline:hover { background: var(--primary); color: #020617; }
 
     /* ===== SECTIONS ===== */
-    section { padding: 110px 12%; }
+    section { padding: 110px 12%; opacity: 0; transform: translateY(60px); transition: 1s; }
+    section.show { opacity: 1; transform: translateY(0); }
 
-    h2 {
-      font-size: 2.6rem;
-      margin-bottom: 50px;
-      position: relative;
-    }
+    h2 { font-size: 2.6rem; margin-bottom: 50px; }
 
-    h2::after {
-      content: "";
-      width: 80px;
-      height: 4px;
-      background: var(--primary);
-      position: absolute;
-      bottom: -15px;
-      left: 0;
-    }
-
-    /* ===== ABOUT ===== */
-    .about-grid {
+    /* ===== METRICS ===== */
+    .metrics {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 50px;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
     }
 
-    .about-box {
-      background: var(--card-bg);
+    .metric {
+      background: var(--bg-card);
       padding: 35px;
-      border-radius: 18px;
+      border-radius: 20px;
+      text-align: center;
       border: 1px solid #1e293b;
-      transition: transform 0.4s ease;
     }
 
-    .about-box:hover { transform: translateY(-10px); }
+    .metric h3 { font-size: 2.5rem; color: var(--primary); }
 
     /* ===== SKILLS ===== */
     .skills-grid {
@@ -119,19 +113,14 @@ Enhanced version with advanced animations & effects
     }
 
     .skill {
-      background: var(--card-bg);
+      background: var(--bg-card);
       padding: 28px;
       border-radius: 18px;
       border: 1px solid #1e293b;
-      transition: all 0.4s ease;
+      transition: 0.4s;
     }
 
-    .skill:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 25px 50px rgba(56,189,248,0.25);
-    }
-
-    .skill h3 { margin-bottom: 10px; color: var(--primary); }
+    .skill:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(56,189,248,0.25); }
 
     /* ===== PROJECTS ===== */
     .projects-grid {
@@ -141,138 +130,134 @@ Enhanced version with advanced animations & effects
     }
 
     .project {
-      background: var(--card-bg);
+      background: var(--bg-card);
       padding: 28px;
       border-radius: 22px;
       border: 1px solid #1e293b;
-      transition: all 0.45s ease;
-      position: relative;
-      overflow: hidden;
+      cursor: pointer;
+      transition: 0.4s;
     }
 
-    .project::before {
-      content: "";
-      position: absolute;
+    .project:hover { transform: translateY(-12px); box-shadow: 0 35px 60px rgba(56,189,248,0.25); }
+
+    .project img { width: 100%; border-radius: 16px; margin-bottom: 15px; }
+
+    /* ===== MODAL ===== */
+    .modal {
+      position: fixed;
       inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(56,189,248,0.15), transparent);
-      transform: translateX(-100%);
-      transition: 0.6s;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
     }
 
-    .project:hover::before { transform: translateX(100%); }
-    .project:hover { transform: translateY(-14px); box-shadow: 0 35px 60px rgba(56,189,248,0.25); }
-
-    .project img { width: 100%; border-radius: 16px; margin-bottom: 18px; }
-
-    .tags span {
-      display: inline-block;
-      margin: 10px 6px 0 0;
-      padding: 6px 14px;
-      font-size: 0.75rem;
-      background: #0f172a;
-      border-radius: 30px;
-      border: 1px solid #1e293b;
+    .modal-content {
+      background: var(--bg-card);
+      padding: 40px;
+      max-width: 600px;
+      border-radius: 20px;
     }
 
-    /* ===== CONTACT ===== */
-    .contact-box {
-      background: var(--card-bg);
-      padding: 55px;
-      border-radius: 24px;
-      text-align: center;
-      border: 1px solid #1e293b;
-      box-shadow: inset 0 0 40px rgba(56,189,248,0.08);
+    /* ===== TIMELINE ===== */
+    .timeline {
+      border-left: 3px solid var(--primary);
+      padding-left: 30px;
     }
+
+    .timeline-item { margin-bottom: 30px; }
 
     footer { text-align: center; padding: 40px; color: #94a3b8; }
 
-    /* ===== KEYFRAMES ===== */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
-
     @media(max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.6rem; }
       section { padding: 80px 8%; }
+      .hero h1 { font-size: 2.6rem; }
     }
   </style></head>
-<body><header>
+<body><div class="theme-toggle" onclick="toggleTheme()">🌙</div><header>
   <div class="hero">
     <h1>Hi, I'm <span>Devendra Patil</span></h1>
-    <p>Data Analyst | SQL • Power BI • Python • Excel • BI & Analytics</p>
+    <p>Data Analyst | SQL • Power BI • Python • Excel</p>
     <div class="hero-buttons">
       <a href="resume.pdf" class="btn-primary">Download Resume</a>
       <a href="#projects" class="btn-outline">View Projects</a>
     </div>
   </div>
-</header><section class="about">
-  <h2>About</h2>
-  <div class="about-grid">
-    <p>
-      Data analyst specializing in end-to-end analytics solutions, combining SQL-based analysis,
-      business intelligence dashboards, and data visualization to deliver actionable insights
-      that support strategic decision-making.
-    </p>
-    <div class="about-box">
-      <strong>Expertise Areas</strong><br><br>
-      • Business Intelligence<br>
-      • Data Visualization<br>
-      • Analytical Reporting<br>
-      • KPI & Metrics Design
-    </div>
+</header><section>
+  <h2>Impact Metrics</h2>
+  <div class="metrics">
+    <div class="metric"><h3>10K+</h3><p>Rows Analyzed</p></div>
+    <div class="metric"><h3>15+</h3><p>Dashboards Built</p></div>
+    <div class="metric"><h3>20+</h3><p>SQL Queries</p></div>
+    <div class="metric"><h3>5+</h3><p>Projects Completed</p></div>
   </div>
 </section><section>
   <h2>Core Skills</h2>
   <div class="skills-grid">
-    <div class="skill"><h3>SQL</h3>Advanced Joins, CTEs, Window Functions, Performance Tuning</div>
-    <div class="skill"><h3>Power BI</h3>DAX, Data Modeling, Power Query, Interactive Dashboards</div>
-    <div class="skill"><h3>Python</h3>Pandas, NumPy, Data Cleaning, EDA</div>
-    <div class="skill"><h3>Excel</h3>Pivot Tables, Power Pivot, Lookups, Dashboarding</div>
-    <div class="skill"><h3>Statistics</h3>Trend Analysis, KPI Analysis, Descriptive Stats</div>
-    <div class="skill"><h3>Analytics</h3>Business Insights, Storytelling, Decision Support</div>
-    <div class="skill"><h3>Data Handling</h3>ETL Concepts, Data Cleaning, Transformation</div>
-    <div class="skill"><h3>Visualization</h3>Charts, Reports, Executive Dashboards</div>
+    <div class="skill">SQL – Advanced Queries, Optimization</div>
+    <div class="skill">Power BI – DAX, Data Modeling</div>
+    <div class="skill">Python – Pandas, EDA</div>
+    <div class="skill">Excel – Dashboards, Power Pivot</div>
+    <div class="skill">Statistics – KPI Analysis</div>
+    <div class="skill">Data Visualization</div>
   </div>
 </section><section id="projects">
   <h2>Selected Projects</h2>
   <div class="projects-grid">
-    <div class="project">
+    <div class="project" onclick="openModal('HR Analytics Dashboard','Employee attrition and workforce insights using SQL and Power BI.')">
       <img src="images/hr_dashboard.png">
       <h3>HR Analytics Dashboard</h3>
-      <p>Employee attrition, performance metrics, and workforce insights.</p>
-      <div class="tags"><span>SQL</span><span>Power BI</span></div>
     </div>
-    <div class="project">
+    <div class="project" onclick="openModal('Sales Performance Analysis','Revenue trends and product performance analysis.')">
       <img src="images/sales_dashboard.png">
       <h3>Sales Performance Analysis</h3>
-      <p>Revenue trends, product performance, and regional analysis.</p>
-      <div class="tags"><span>SQL</span><span>Excel</span><span>Power BI</span></div>
     </div>
-    <div class="project">
+    <div class="project" onclick="openModal('COVID-19 Data Analysis','Global COVID-19 data analysis using SQL.')">
       <img src="images/covid_analysis.png">
       <h3>COVID-19 Data Analysis</h3>
-      <p>Global pandemic data exploration and trend analysis.</p>
-      <div class="tags"><span>SQL</span></div>
     </div>
   </div>
 </section><section>
-  <h2>Contact</h2>
-  <div class="contact-box">
-    <p>Email: your.email@example.com</p>
-    <p>GitHub: github.com/Devendra0602</p>
-    <p>LinkedIn: linkedin.com/in/devendrapatil</p>
+  <h2>Experience Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-item">2025 – Advanced Data Analytics Projects</div>
+    <div class="timeline-item">2024 – Power BI & SQL Dashboard Development</div>
+    <div class="timeline-item">2023 – Data Analysis Foundations</div>
   </div>
-</section><footer>
-  © 2026 Devendra Patil · Data Analytics Portfolio
-</footer><script>
+</section><section>
+  <h2>Contact</h2>
+  <p>Email: your.email@example.com</p>
+  <p>GitHub: github.com/Devendra0602</p>
+  <p>LinkedIn: linkedin.com/in/devendrapatil</p>
+</section><footer>© 2026 Devendra Patil · Data Analytics Portfolio</footer><div class="modal" id="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div><script>
   const sections = document.querySelectorAll('section');
   const reveal = () => {
     sections.forEach(sec => {
-      const top = sec.getBoundingClientRect().top;
-      if (top < window.innerHeight - 120) sec.classList.add('show');
+      if (sec.getBoundingClientRect().top < window.innerHeight - 120)
+        sec.classList.add('show');
     });
   };
   window.addEventListener('scroll', reveal);
   reveal();
+
+  function openModal(title, desc) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDesc').innerText = desc;
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  function toggleTheme() {
+    document.body.classList.toggle('light');
+  }
 </script></body>
 </html>
