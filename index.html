@@ -1,64 +1,87 @@
-<!DOCTYPE html><!--
-============================================
-PROFESSIONAL DATA ANALYTICS PORTFOLIO
-Advanced version with animations, modals, metrics & theme toggle
-============================================
---><html lang="en">
+<!DOCTYPE html>
+<!--
+====================================================
+ULTRA‑PROFESSIONAL DATA ANALYTICS PORTFOLIO
+• High‑end animations
+• Fully mobile‑responsive (fixed)
+• Premium UI polish
+====================================================
+-->
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <title>Devendra Patil | Data Analyst Portfolio</title>  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>Devendra Patil | Data Analyst Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
     :root {
       --primary: #38bdf8;
       --bg-main: #0b1120;
-      --bg-card: #020617;
-      --text-light: #cbd5f5;
+      --bg-card: rgba(2,6,23,0.85);
+      --text-muted: #94a3b8;
+      --glass: rgba(255,255,255,0.06);
     }
 
-    body.light {
-      --bg-main: #f8fafc;
-      --bg-card: #ffffff;
-      --text-light: #334155;
-      background: var(--bg-main);
-      color: #020617;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg-main); color: #e5e7eb; }
-    a { color: var(--primary); text-decoration: none; }
-
-    /* ===== THEME TOGGLE ===== */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--bg-card);
-      border: 1px solid #1e293b;
-      padding: 10px 14px;
-      border-radius: 30px;
-      cursor: pointer;
-      z-index: 1000;
+    body {
+      background: radial-gradient(circle at top, #020617, #0b1120 60%);
+      color: #e5e7eb;
+      overflow-x: hidden;
     }
 
-    /* ===== HERO ===== */
+    /* ================= GLOBAL ================= */
+    section {
+      padding: clamp(70px, 8vw, 120px) clamp(20px, 10vw, 140px);
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+    section.show { opacity: 1; transform: translateY(0); }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+    }
+
+    /* ================= HERO ================= */
     header {
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      place-items: center;
       text-align: center;
-      background: linear-gradient(135deg, #020617, #0b1120);
       position: relative;
       overflow: hidden;
     }
 
-    header::before {
+    header::before,
+    header::after {
       content: "";
       position: absolute;
       width: 600px;
       height: 600px;
       background: radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
-      animation: float 10s infinite alternate;
+      animation: float 12s infinite alternate;
+    }
+
+    header::after {
+      animation-delay: 4s;
+      background: radial-gradient(circle, rgba(168,85,247,0.18), transparent 70%);
     }
 
     @keyframes float {
@@ -66,198 +89,253 @@ Advanced version with animations, modals, metrics & theme toggle
       to { transform: translate(200px, 200px); }
     }
 
-    .hero { position: relative; z-index: 2; padding: 20px; }
-    .hero h1 { font-size: 3.5rem; }
-    .hero span { color: var(--primary); }
-    .hero p { margin: 20px 0 35px; color: var(--text-light); font-size: 1.3rem; }
-
-    .hero-buttons a {
-      padding: 14px 30px;
-      border-radius: 30px;
-      margin: 0 10px;
-      transition: 0.3s;
+    .hero {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      max-width: 900px;
     }
 
-    .btn-primary { background: var(--primary); color: #020617; }
-    .btn-primary:hover { box-shadow: 0 0 40px rgba(56,189,248,0.6); }
-    .btn-outline { border: 1px solid var(--primary); }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 700;
+      animation: fadeDown 1.2s ease;
+    }
 
-    /* ===== SECTIONS ===== */
-    section { padding: 110px 12%; opacity: 0; transform: translateY(60px); transition: 1s; }
-    section.show { opacity: 1; transform: translateY(0); }
+    .hero span { color: var(--primary); }
 
-    h2 { font-size: 2.6rem; margin-bottom: 50px; }
+    .hero p {
+      margin: 20px auto 40px;
+      color: var(--text-muted);
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      max-width: 700px;
+      animation: fadeUp 1.4s ease;
+    }
 
-    /* ===== METRICS ===== */
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .hero-buttons a {
+      padding: 14px 34px;
+      border-radius: 999px;
+      font-weight: 500;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #020617;
+      box-shadow: 0 0 30px rgba(56,189,248,0.45);
+    }
+
+    .btn-primary:hover { transform: translateY(-4px) scale(1.05); }
+
+    .btn-outline {
+      border: 1px solid var(--primary);
+      background: var(--glass);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #020617;
+    }
+
+    /* ================= METRICS ================= */
     .metrics {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 25px;
     }
 
     .metric {
-      background: var(--bg-card);
-      padding: 35px;
-      border-radius: 20px;
+      background: linear-gradient(180deg, var(--bg-card), transparent);
+      padding: 36px 24px;
+      border-radius: 22px;
       text-align: center;
-      border: 1px solid #1e293b;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      transition: 0.4s;
     }
 
-    .metric h3 { font-size: 2.5rem; color: var(--primary); }
+    .metric:hover { transform: translateY(-10px); }
 
-    /* ===== SKILLS ===== */
+    .metric h3 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      color: var(--primary);
+    }
+
+    /* ================= SKILLS ================= */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
     }
 
     .skill {
       background: var(--bg-card);
-      padding: 28px;
-      border-radius: 18px;
-      border: 1px solid #1e293b;
+      padding: 26px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
       transition: 0.4s;
     }
 
-    .skill:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(56,189,248,0.25); }
+    .skill:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px rgba(56,189,248,0.25);
+    }
 
-    /* ===== PROJECTS ===== */
+    /* ================= PROJECTS ================= */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 35px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
     }
 
     .project {
-      background: var(--bg-card);
+      background: linear-gradient(180deg, var(--bg-card), transparent);
       padding: 28px;
-      border-radius: 22px;
-      border: 1px solid #1e293b;
-      cursor: pointer;
-      transition: 0.4s;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      transition: 0.45s;
     }
 
-    .project:hover { transform: translateY(-12px); box-shadow: 0 35px 60px rgba(56,189,248,0.25); }
-
-    .project img { width: 100%; border-radius: 16px; margin-bottom: 15px; }
-
-    /* ===== MODAL ===== */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
+    .project:hover {
+      transform: translateY(-14px) scale(1.02);
+      box-shadow: 0 40px 80px rgba(56,189,248,0.3);
     }
 
-    .modal-content {
+    .project img {
+      width: 100%;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    /* ================= CONTACT ================= */
+    .contact-box {
       background: var(--bg-card);
-      padding: 40px;
-      max-width: 600px;
-      border-radius: 20px;
+      padding: 50px 30px;
+      border-radius: 28px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
     }
 
-    /* ===== TIMELINE ===== */
-    .timeline {
-      border-left: 3px solid var(--primary);
-      padding-left: 30px;
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
     }
 
-    .timeline-item { margin-bottom: 30px; }
-
-    footer { text-align: center; padding: 40px; color: #94a3b8; }
-
-    @media(max-width: 900px) {
-      section { padding: 80px 8%; }
-      .hero h1 { font-size: 2.6rem; }
+    /* ================= ANIMATIONS ================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-  </style></head>
-<body><div class="theme-toggle" onclick="toggleTheme()">🌙</div><header>
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================= MOBILE FIXES ================= */
+    @media (max-width: 600px) {
+      header::before, header::after { width: 300px; height: 300px; }
+      h2::after { width: 50px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
   <div class="hero">
     <h1>Hi, I'm <span>Devendra Patil</span></h1>
-    <p>Data Analyst | SQL • Power BI • Python • Excel</p>
+    <p>Data Analyst · Business Intelligence · SQL · Power BI · Python</p>
     <div class="hero-buttons">
       <a href="resume.pdf" class="btn-primary">Download Resume</a>
       <a href="#projects" class="btn-outline">View Projects</a>
     </div>
   </div>
-</header><section>
+</header>
+
+<section>
   <h2>Impact Metrics</h2>
   <div class="metrics">
     <div class="metric"><h3>10K+</h3><p>Rows Analyzed</p></div>
     <div class="metric"><h3>15+</h3><p>Dashboards Built</p></div>
-    <div class="metric"><h3>20+</h3><p>SQL Queries</p></div>
-    <div class="metric"><h3>5+</h3><p>Projects Completed</p></div>
+    <div class="metric"><h3>20+</h3><p>Complex SQL Queries</p></div>
+    <div class="metric"><h3>5+</h3><p>End‑to‑End Projects</p></div>
   </div>
-</section><section>
+</section>
+
+<section>
   <h2>Core Skills</h2>
   <div class="skills-grid">
-    <div class="skill">SQL – Advanced Queries, Optimization</div>
-    <div class="skill">Power BI – DAX, Data Modeling</div>
-    <div class="skill">Python – Pandas, EDA</div>
-    <div class="skill">Excel – Dashboards, Power Pivot</div>
-    <div class="skill">Statistics – KPI Analysis</div>
-    <div class="skill">Data Visualization</div>
+    <div class="skill">SQL · CTEs · Window Functions · Optimization</div>
+    <div class="skill">Power BI · DAX · Data Modeling · Power Query</div>
+    <div class="skill">Python · Pandas · NumPy · EDA</div>
+    <div class="skill">Excel · Power Pivot · Advanced Dashboards</div>
+    <div class="skill">Statistics · KPI Analysis · Trends</div>
+    <div class="skill">Data Visualization · Storytelling</div>
+    <div class="skill">ETL Concepts · Data Cleaning</div>
+    <div class="skill">Business Insights · Decision Support</div>
   </div>
-</section><section id="projects">
+</section>
+
+<section id="projects">
   <h2>Selected Projects</h2>
   <div class="projects-grid">
-    <div class="project" onclick="openModal('HR Analytics Dashboard','Employee attrition and workforce insights using SQL and Power BI.')">
-      <img src="images/hr_dashboard.png">
+    <div class="project">
+      <img src="images/hr_dashboard.png" alt="HR Analytics Dashboard" />
       <h3>HR Analytics Dashboard</h3>
+      <p>Workforce attrition and performance insights using SQL & Power BI.</p>
     </div>
-    <div class="project" onclick="openModal('Sales Performance Analysis','Revenue trends and product performance analysis.')">
-      <img src="images/sales_dashboard.png">
+    <div class="project">
+      <img src="images/sales_dashboard.png" alt="Sales Analysis" />
       <h3>Sales Performance Analysis</h3>
+      <p>Revenue trends and product performance dashboards.</p>
     </div>
-    <div class="project" onclick="openModal('COVID-19 Data Analysis','Global COVID-19 data analysis using SQL.')">
-      <img src="images/covid_analysis.png">
-      <h3>COVID-19 Data Analysis</h3>
+    <div class="project">
+      <img src="images/covid_analysis.png" alt="COVID Data Analysis" />
+      <h3>COVID‑19 Data Analysis</h3>
+      <p>Global pandemic trends and vaccination insights.</p>
     </div>
   </div>
-</section><section>
-  <h2>Experience Timeline</h2>
-  <div class="timeline">
-    <div class="timeline-item">2025 – Advanced Data Analytics Projects</div>
-    <div class="timeline-item">2024 – Power BI & SQL Dashboard Development</div>
-    <div class="timeline-item">2023 – Data Analysis Foundations</div>
-  </div>
-</section><section>
+</section>
+
+<section>
   <h2>Contact</h2>
-  <p>Email: your.email@example.com</p>
-  <p>GitHub: github.com/Devendra0602</p>
-  <p>LinkedIn: linkedin.com/in/devendrapatil</p>
-</section><footer>© 2026 Devendra Patil · Data Analytics Portfolio</footer><div class="modal" id="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <h3 id="modalTitle"></h3>
-    <p id="modalDesc"></p>
+  <div class="contact-box">
+    <p>Email: your.email@example.com</p>
+    <p>GitHub: github.com/Devendra0602</p>
+    <p>LinkedIn: linkedin.com/in/devendrapatil</p>
   </div>
-</div><script>
+</section>
+
+<footer>
+  © 2026 Devendra Patil · Data Analytics Portfolio
+</footer>
+
+<script>
   const sections = document.querySelectorAll('section');
   const reveal = () => {
     sections.forEach(sec => {
-      if (sec.getBoundingClientRect().top < window.innerHeight - 120)
+      if (sec.getBoundingClientRect().top < window.innerHeight - 120) {
         sec.classList.add('show');
+      }
     });
   };
   window.addEventListener('scroll', reveal);
   reveal();
+</script>
 
-  function openModal(title, desc) {
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalDesc').innerText = desc;
-    document.getElementById('modal').style.display = 'flex';
-  }
-
-  function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-  }
-
-  function toggleTheme() {
-    document.body.classList.toggle('light');
-  }
-</script></body>
+</body>
 </html>
